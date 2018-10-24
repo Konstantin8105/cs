@@ -12,6 +12,24 @@ import (
 	errors "github.com/Konstantin8105/errors"
 )
 
+// All run all codestyle test for golang sources
+//
+//	Ignore data from folder "testdata"
+//
+func All(t *testing.T) {
+	tcs := []struct {
+		name string
+		f    func(*testing.T)
+	}{
+		{"Todo", Todo},
+		{"Debug", Debug},
+		{"Os", Os},
+	}
+	for _, tc := range tcs {
+		t.Run(tc.name, tc.f)
+	}
+}
+
 // Todo calculate amount comments with TODO in golang sources.
 //
 //	Ignore data from folder "testdata"
@@ -29,7 +47,7 @@ func Todo(t *testing.T) {
 		}
 
 		// write result
-		t.Logf("%13s:%-4d %s", source, pos, line)
+		t.Logf("%13s:%-4d %s", source, pos, strings.TrimSpace(line))
 		amount++
 	})
 	if amount > 0 {
@@ -47,7 +65,7 @@ func Debug(t *testing.T) {
 			// ignore lines without fmt Print
 			return
 		}
-		t.Errorf("%13s:%-4d %s", source, pos, line)
+		t.Errorf("%13s:%-4d %s", source, pos, strings.TrimSpace(line))
 	})
 
 	iterator(t, func(line, source string, pos int) {
