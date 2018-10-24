@@ -26,7 +26,7 @@ func Os(t *testing.T)
 	Ignore data from folder "testdata"
 
 func Todo(t *testing.T)
-    Todo calculate amount comments with TODO in golang sources.
+    Todo calculate amount comments with TODO, FIX, BUG in golang sources.
 
 	Ignore data from folder "testdata"
 

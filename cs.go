@@ -30,7 +30,7 @@ func All(t *testing.T) {
 	}
 }
 
-// Todo calculate amount comments with TODO in golang sources.
+// Todo calculate amount comments with TODO, FIX, BUG in golang sources.
 //
 //	Ignore data from folder "testdata"
 //
@@ -41,7 +41,9 @@ func Todo(t *testing.T) {
 			// ignore lines witout comments
 			return
 		}
-		if !strings.Contains(strings.ToUpper(line), "TODO") {
+		if !(strings.Contains(strings.ToUpper(line), "TODO") ||
+			strings.Contains(strings.ToUpper(line), "FIX") ||
+			strings.Contains(strings.ToUpper(line), "BUG")) {
 			// ignore lines without TODO
 			return
 		}
