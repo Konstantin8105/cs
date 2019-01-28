@@ -142,6 +142,11 @@ func iterator(t *testing.T, f func(line, source string, linePosition int)) {
 	}
 
 	for i := range sources {
+		// ignore folder vendor
+		if strings.Contains(sources[i], "vendor"+string(os.PathSeparator)) {
+			continue
+		}
+
 		t.Run(sources[i], func(t *testing.T) {
 			// open file
 			file, err := os.Open(sources[i])
