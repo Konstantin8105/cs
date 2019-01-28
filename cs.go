@@ -67,7 +67,7 @@ func Debug(t *testing.T) {
 			// ignore lines without fmt Print
 			return
 		}
-		t.Errorf("%13s:%-4d %s", source, pos, strings.TrimSpace(line))
+		t.Errorf("Fail: %13s:%-4d %s", source, pos, strings.TrimSpace(line))
 	})
 
 	iterator(t, func(line, source string, pos int) {
@@ -94,7 +94,7 @@ func Os(t *testing.T) {
 			strings.Contains(strings.ToUpper(line), "MAC"+"OS")) {
 			return
 		}
-		t.Errorf("%13s:%-4d %s", source, pos, line)
+		t.Errorf("Fail: %13s:%-4d %s", source, pos, line)
 	})
 }
 
